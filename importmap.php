@@ -18,4 +18,7 @@ return [
         'path' => 'app.js',
         'preload' => true,
     ],
+    'tailwindcss' => [
+        'url' => 'https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/+esm',
+    ],
 ];
