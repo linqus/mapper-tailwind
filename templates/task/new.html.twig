@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form with ['tailwind_2_layout.html.twig'] only %}
+
+{% block body %}
+    <div class="container my-24 mx-auto md:px-12">
+    {{ form(form) }}
+    </div>
+{% endblock body %}

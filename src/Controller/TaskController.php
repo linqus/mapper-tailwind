@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Form\Type\TaskType;
 use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,14 +22,22 @@ class TaskController extends AbstractController
         $task->setTask('Write a book!');
         $task->setDueDate(new DateTimeImmutable('next year'));
 
-        $form = $this->createFormBuilder($task)
+        // form built in controller
+        /* $form = $this->createFormBuilder($task)
             ->add('task', TextType::class)
             ->add('dueDate', DateType::class)
             ->add('save', SubmitType::class, [
                 'label' => 'Create Task',
             ])
             ->getForm();
+        */
+        
+        // form built with class
+        $form = $this->createForm(TaskType::class, $task);
 
+        return $this->render('task/new.html.twig', [
+            'form' => $form,
+        ]);
 
     }
 }
