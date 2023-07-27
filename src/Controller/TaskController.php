@@ -22,6 +22,7 @@ class TaskController extends AbstractController
         $task->setTask('Write a book!');
         $task->setDueDate(new DateTimeImmutable('next year'));
 
+
         // form built in controller
         /* $form = $this->createFormBuilder($task)
             ->add('task', TextType::class)
@@ -34,6 +35,12 @@ class TaskController extends AbstractController
         
         // form built with class
         $form = $this->createForm(TaskType::class, $task);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            //$task = $form->getData();
+            
+        }
 
         return $this->render('task/new.html.twig', [
             'form' => $form,
